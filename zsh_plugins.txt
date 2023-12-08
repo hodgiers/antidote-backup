@@ -130,7 +130,7 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/alias-finder
 ohmyzsh/ohmyzsh path:plugins/autojump
-
+ohmyzsh/ohmyzsh path:plugins/direnv
 
 ### Framework: Prezto
 #
@@ -233,4 +233,4 @@ zsh-users/zsh-history-substring-search
 #	#bindkey "$terminfo[kcuu1]" history-substring-search-up
 #	#bindkey "$terminfo[kcud1]" history-substring-search-down
 zsh-users/zsh-autosuggestions #kind:defer
-#ohmyzsh/ohmyzsh path:plugins/1password
+#ptavares/zsh-direnv
