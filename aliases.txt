@@ -43,11 +43,12 @@ alias zdot='cd ${ZDOTDIR:-~}'
 
 #misc-custom
 alias openws='open -a Sublime\ Text.app'
-alias myip='curl icanhazip.com'
+#alias mypubip='curl icanhazip.com'
 alias reload_profile="source ~/.config/zsh/.zshrc"
 alias shortcuts='cat ~/Desktop/terminal_shortcuts.txt'
 alias lsize='ls -l --block-size=M'
 #
 function remote() { echo 'sshfs -o allow_other,defer_permissions,IdentityFile=~/.ssh/id_rsa '$1':/ /Users/rhodge/remotehosts' | pbcopy }
 function myalias() { sed -n -e '/#misc-custom/,$p' ~/.config/zsh/.aliases }
+function myip() { echo "\nLocal ip's" && ifconfig | awk '$1 == "inet" {print $2}' && echo "\nPublic IP" && curl icanhazip.com }
 #
