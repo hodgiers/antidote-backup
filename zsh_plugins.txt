@@ -32,7 +32,12 @@ agkozak/zsh-z
 mattmc3/zephyr path:plugins/completion
 mattmc3/zephyr path:plugins/homebrew
 mattmc3/zephyr path:plugins/macos
-
+mattmc3/zephyr path:plugins/color
+akash329d/zsh-alias-finder
+djui/alias-tips
+fdellwing/zsh-bat
+ptavares/zsh-direnv
+webyneter/docker-aliases
 
 ### Local Plugins
 #
@@ -131,6 +136,7 @@ ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/alias-finder
 ohmyzsh/ohmyzsh path:plugins/autojump
 ohmyzsh/ohmyzsh path:plugins/direnv
+ohmyzsh/ohmyzsh path:plugins/docker-compose
 
 ### Framework: Prezto
 #
@@ -228,6 +234,7 @@ belak/zsh-utils path:completion
 # We combine the `path:` and `kind:fpath` annotations here:
 zsh-users/zsh-completions path:src kind:fpath
 zsh-users/zsh-history-substring-search
+#zsh-users/zsh-completions
 #	#bindkey "$terminfo[kcuu1]" /Users/rhodge/Library/Caches/antidote/zsh-users/zsh-history-substring-search/history-substring-search-up
 #	#bindkey "$terminfo[kcud1]" /Users/rhodge/Library/Caches/antidote/zsh-users/zsh-history-substring-search/history-substring-search-down
 #	#bindkey "$terminfo[kcuu1]" history-substring-search-up

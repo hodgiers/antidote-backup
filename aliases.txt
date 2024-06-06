@@ -15,6 +15,7 @@ alias vi=vim
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias ldot='ls -ld .*'
+alias latr= 'ls -latr'
 alias lsize='ls -l --block-size=M'
 
 # fix common typos
@@ -36,7 +37,6 @@ alias urlencode='python3 -c "import sys, urllib.parse as ul; \
     print (ul.quote_plus(sys.argv[1]))"'
 
 # misc
-alias please=sudo
 alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 alias zdot='cd ${ZDOTDIR:-~}'
@@ -44,11 +44,35 @@ alias zdot='cd ${ZDOTDIR:-~}'
 #misc-custom
 alias openws='open -a Sublime\ Text.app'
 #alias mypubip='curl icanhazip.com'
-alias reload_profile="source ~/.config/zsh/.zshrc"
+alias reload_profile="exec zsh"
 alias shortcuts='cat ~/Desktop/terminal_shortcuts.txt'
 alias lsize='ls -l --block-size=M'
+alias fullhistory='history 1'
+alias cat='bat --paging=never'
+alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 #
 function remote() { echo 'sshfs -o allow_other,defer_permissions,IdentityFile=~/.ssh/id_rsa '$1':/ /Users/rhodge/remotehosts' | pbcopy }
 function myalias() { sed -n -e '/#misc-custom/,$p' ~/.config/zsh/.aliases }
-function myip() { echo "\nLocal ip's" && ifconfig | awk '$1 == "inet" {print $2}' && echo "\nPublic IP" && curl icanhazip.com }
+function pubkey(){ ssh-keygen -y -f $1 }
+function admin(){
+    op read "op://qjqnnbjmn3erhn746evz4erzdy/ixajeg4bmtm5jomchsb67gh2oi/password" | pbcopy
+    cred=`pbpaste`
+    su $ADMINUSER
+    sudo dscl . -merge /groups/admin GroupMembership $USER
+    }
+function sods(){ 
+    echo "sudo dscl . -merge /groups/admin GroupMembership /$USER" | pbcopy
+    }
+function please(){
+    op read "op://wk5xp5hxjdxewnvqcbeceetv2y/tcj6figqqdyxlhbuyzrk3tfy2e/password" | pbcopy && sudo "$@"
+}
+function myip() {
+  echo "___________\nLocal IPs and Interfaces\n______________________"
+  ifconfig | awk '
+    /flags=/ {iface = $1}
+    $1 == "inet" {print iface ": " $2 "\n______________________"}
+  '
+  echo "_________\nPublic IP\n______________"
+  curl icanhazip.com
+}
 #
