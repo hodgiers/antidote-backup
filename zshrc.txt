@@ -19,28 +19,29 @@ HISTFILE=${HOME}/.local/share/zsh/history
 HISTSIZE=100000
 SAVEHIST=${HISTSIZE}
 
-
 # Autoload functions you might want to use with antidote.
 ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/.functions}
 fpath=($ZFUNCDIR $fpath)
 autoload -Uz $fpath[1]/*(.:t)
 eval "$(direnv hook zsh)"
+eval "$(op completion zsh)"
 
 # Source zstyles you might use with antidote.
 [[ -e ${ZDOTDIR:-~}/.zstyles ]] && source ${ZDOTDIR:-~}/.zstyles
 
 # Clone antidote if necessary.
 [[ -d ${ZDOTDIR:-~}/.antidote ]] ||
-  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
+git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
 
 # Create an amazing Zsh config using antidote plugins.
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
+#FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 autoload -Uz compinit && compinit
-
+#
 eval "bindkey "$terminfo[kcuu1]" history-substring-search-up"
 eval "bindkey "$terminfo[kcud1]" history-substring-search-down"
-MAGIC_ENTER_OTHER_COMMAND='ls -ltra .'
+MAGIC_ENTER_OTHER_COMMAND='eza --long --all'
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-eval "$(op completion zsh)"; compdef _op op
+export BAT_THEME='gruvbox-dark'
 #
